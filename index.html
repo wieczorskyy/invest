@@ -1,138 +1,1047 @@
 <!DOCTYPE html>
-<html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="pl" data-bs-theme="dark">
 
-    <title>Shire Coffee</title>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="stylesheet" href="style.css">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+    <title>Wieczorek Investments</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-light">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
 
-    <div class="bg-black text-center text-white p-3">Lorem ipsum dolor sit amet consectetur adipisicing amet.</div>
+<body class="bg-black text-white">
 
-    <nav class="navbar container-xl border-bottom p-3 pb-4">
-      <ul class="navbar-nav flex-row gap-3 col">
-        <li class="nav-item">
-          <a class="nav-link fs-5 fw-medium active" href="#"><span class="d-none d-sm-inline-block">Sklep</span><svg class="d-sm-none" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#000"><path d="M160-720v-80h640v80H160Zm0 560v-240h-40v-80l40-200h640l40 200v80h-40v240h-80v-240H560v240H160Zm80-80h240v-160H240v160Zm-38-240h556-556Zm0 0h556l-24-120H226l-24 120Z"/></svg></a>
-        </li>
-        <li class="nav-item d-none d-md-inline-block">
-          <a class="nav-link fs-5 fw-medium active" href="#">Instagram</a>
-        </li>
-      </ul>
-      <div class="col navbar-brand text-center lh-1 py-1 me-0"><i class="display-4 fw-bold">Shire Coffee</i><br><span class="small">Mazurska Palarnia Kawy</span></div>
-      <ul class="navbar-nav flex-row justify-content-end gap-3 col">
-        <li class="nav-item d-none d-md-inline-block">
-          <a class="nav-link fs-5 fw-medium active" href="#">Pomoc</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fs-5 fw-medium active" href="#"><span class="d-none d-sm-inline-block">Koszyk (0)</span><svg class="d-sm-none" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#000"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg></a>
-        </li>
-      </ul>
-    </nav>
+    <!-- HEADER -->
+    <div class="bg-black sticky-top icon-link gap-2 w-100 p-3">
 
-    <div class="container-fluid p-0">
-      <div class="row row-cols-1 row-cols-sm-2 g-0">
-        <div class="col">
-          <div class="ratio ratio-16x9">
-            <img src="https://dritan-alsela.de/cdn/shop/files/Bilder-Fotos-auf-Dritan-Alsela-Trello.png?v=1709753323&width=663" class="img-fluid object-fit-cover object-position-center">
-          </div>
+        <img
+            class="img-fluid object-fit-cover rounded-circle width-1 p-1 bg-white"
+            src="https://plain-weur-prod-public.komododecks.com/202605/25/jAsrISNJ3wOWP5EcWXG5/image.png"
+        >
+
+        <span class="fs-5 lh-1 logo">
+            Wieczorek
+            <br>
+            Investments
+        </span>
+
+        <div class="icon-link ms-auto">
+
+            <!-- DODAJ -->
+            <svg
+                role="button"
+                data-bs-toggle="modal"
+                data-bs-target="#addAssetModal"
+                xmlns="http://www.w3.org/2000/svg"
+                height="32px"
+                viewBox="0 -960 960 960"
+                width="32px"
+                fill="#fff"
+            >
+                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+            </svg>
+
+            <!-- IMPORT -->
+            <label class="btn p-0 m-0">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32px"
+                    viewBox="0 -960 960 960"
+                    width="32px"
+                    fill="#fff"
+                >
+                    <path d="M467-120q-73-1-136-14t-110-34.5q-47-21.5-74-50T120-280q0 33 27 61.5t74 50Q268-147 331-134t136 14Zm-15-200q-38-2-73.5-6.5t-67.5-12q-32-7.5-60-17.5t-51-23q23 13 51 23t60 17.5q32 7.5 67.5 12T452-320Zm28-279q89 0 179-26.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 27 101.5 53.5T480-599Zm220 479h40v-164l72 72 28-28-120-120-120 120 28 28 72-72v164ZM578.5-98.5Q520-157 520-240t58.5-141.5Q637-440 720-440t141.5 58.5Q920-323 920-240T861.5-98.5Q803-40 720-40T578.5-98.5ZM443-201q3 22 9 42t15 39q-73-1-136-14t-110-34.5q-47-21.5-74-50T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v187q-19-9-39-15t-41-9v-62q-52 29-124 44t-156 15q-85 0-157-15t-123-44v101q51 47 130.5 62.5T480-400h11q-13 18-22.5 38T452-320q-76-4-141-18.5T200-379v99q7 13 30 26.5t56 24q33 10.5 73.5 18T443-201Z"/>
+                </svg>
+
+                <input
+                    type="file"
+                    id="importFile"
+                    class="d-none"
+                    accept=".json"
+                >
+
+            </label>
+
+            <!-- EXPORT -->
+            <button
+                class="btn btn-sm btn-light fw-semibold px-3 rounded-pill ms-1"
+                id="exportBtn"
+            >
+                Zapisz
+            </button>
+
         </div>
-        <div class="col">
-          <div class="ratio ratio-16x9">
-            <img src="https://dritan-alsela.de/cdn/shop/files/dritan-home-2-bw.jpg?v=1710269776&width=900" class="img-fluid object-fit-cover object-position-center">
-          </div>
-        </div>
-      </div>
     </div>
 
-    <div class="border-bottom border-2 py-3 overflow-hidden">
-      <p class="text-black text-nowrap fs-2 fw-semibold font-monospace lh-1 mb-0 marquee">
-        We brew.
-        We love coffee.
-        We make art.
-        We roast.
-        We brew.
-        We love coffee.
-        We make art.
-        We roast.
-        We brew.
-        We love coffee.
-        We make art.
-        We roast.
-      </p>
+
+    <!-- PORTFEL -->
+
+    <p class="fw-medium text-muted text-center w-100 pt-2 mt-3 mb-1">
+        Portfel Główny
+    </p>
+
+    <div class="display-1 fw-bold text-center w-100 mb-2">
+        <span id="total-amount-val"></span>
+        <span class="fs-2">zł</span>
     </div>
 
-    <div class="container-xl">
-      <h2 class="fs-1 fst-italic fw-bold lh-lg my-4">Kawy wypalane przez nas</h2>
-      <div class="row row-cols-1 row-cols-md-3 gy-4 gx-xl-5 pt-2">
-        <div class="col">
-          <div class="ratio ratio-1x1 mb-3">
-            <img src="https://dritan-alsela.de/cdn/shop/files/dritan-home-2-bw.jpg?v=1710269776&width=900" class="img-fluid object-fit-cover object-position-center rounded">
-          </div>
-          <p class="fs-5 fw-medium lh-sm">GUATEMALA SANTA BARBARA [ESPRESSO]
-            BLACK CURRANT, BERRY, CARAMEL, CHOCOLATE
-            59,00 zł – 215,00 zł</p>
+    <div class="small text-center w-100 pb-1 mb-5">
+        <span class="fw-medium text-success">▲ 0,00 zł</span>
+        <span class="text-muted">/ w tym miesiącu</span>
+    </div>
+
+
+    <!-- KATEGORIE -->
+
+    <div class="icon-link align-items-baseline justify-content-between px-3 mb-3 w-100">
+
+        <h5 class="fw-semibold text-center px-2 mb-0">
+            Według kategorii
+        </h5>
+
+        <button
+            type="button"
+            class="btn btn-link fw-semibold text-success text-decoration-none px-2"
+            data-bs-toggle="modal"
+            data-bs-target="#historyModal"
+        >
+            Aktywność
+        </button>
+
+    </div>
+
+
+    <div class="d-flex flex-column p-3 border rounded-4 mx-3 mb-4">
+
+        <div class="icon-link">
+            Obligacje
+            <span class="ms-auto" id="val-obligacje"></span>
         </div>
-        <div class="col">
-          <div class="ratio ratio-1x1 mb-3">
-            <img src="https://dritan-alsela.de/cdn/shop/files/dritan-home-2-bw.jpg?v=1710269776&width=900" class="img-fluid object-fit-cover object-position-center rounded">
-          </div>
-          <p class="fs-5 fw-medium lh-sm">GUATEMALA SANTA BARBARA [ESPRESSO]
-            BLACK CURRANT, BERRY, CARAMEL, CHOCOLATE
-            59,00 zł – 215,00 zł</p>
+
+        <hr class="hr">
+
+        <div class="icon-link">
+            Akcje
+            <span class="ms-auto" id="val-akcje"></span>
         </div>
-        <div class="col">
-          <div class="ratio ratio-1x1 mb-3">
-            <img src="https://dritan-alsela.de/cdn/shop/files/dritan-home-2-bw.jpg?v=1710269776&width=900" class="img-fluid object-fit-cover object-position-center rounded">
-          </div>
-          <p class="fs-5 fw-medium lh-sm">GUATEMALA SANTA BARBARA [ESPRESSO]
-            BLACK CURRANT, BERRY, CARAMEL, CHOCOLATE
-            59,00 zł – 215,00 zł</p>
+
+        <hr class="hr">
+
+        <div class="icon-link">
+            Kryptowaluty
+            <span class="ms-auto" id="val-kryptowaluty"></span>
         </div>
-      </div>
+
+        <hr class="hr">
+
+        <div class="icon-link">
+            Inne aktywa
+            <span class="ms-auto" id="val-inne"></span>
+        </div>
+
     </div>
 
-    <div class="ratio ratio-21x9 my-5 my-md-0">
-      <img src="https://dritan-alsela.de/cdn/shop/files/dritan-roastery-1-bw-min.jpg?v=1710271187&width=1950" class="img-fluid object-fit-cover py-md-5">
-    </div>
 
-    <div class="container-xl text-center py-2 py-md-4">
-      <h3 class="display-4 fw-bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, maiores.</h3>
-      <a href="" class="fs-3 fw-semibold link-dark link-underline-opacity-100 link-underline-opacity-0-hover pb-2 mb-5 d-inline-block">Dołącz teraz</a>
-    </div>
+    <!-- CEL -->
 
-    <footer class="bg-black text-white">
-      <div class="container-xl py-4 py-md-3">
-        <div class="row">
-            <div class="col d-flex flex-wrap gap-1">
-                <p class="mb-0">&copy; Shire Coffee &middot; Wszelkie prawa zastrzeżone.</p>
-                <div class="d-inline-flex gap-2 text-end ms-sm-auto">
-                  <a href="" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">Regulamin</a>
-                  <a href="" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">Prywatność</a>
-                  <span>/</span>
-                  <p class="fst-italic mb-0">Made by <a href="" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">Linkerr</a></p>
-                </div>
+    <div class="d-flex flex-column p-3 border rounded-4 mx-3 mb-4">
+
+        <span>Kupić mieszkanie</span>
+
+        <div
+            class="progress my-3"
+            role="progressbar"
+            style="height: .25rem"
+        >
+            <div
+                class="progress-bar bg-success"
+                id="progress-bar"
+            ></div>
+        </div>
+
+        <div class="icon-link">
+
+            <div>
+
+                <span
+                    class="fw-medium small text-muted"
+                    id="progress-collected"
+                >
+                    Zebrano:
+                </span>
+
+                <br>
+
+                <span class="fw-medium small text-muted">
+                    Docelowo: 250 000,00 zł
+                </span>
+
             </div>
-        </div>
-      </div>
-    </footer>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+            <span
+                class="display-2 logo ms-auto"
+                id="progress-percent"
+            ></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- KALKULATOR -->
+
+    <div class="d-flex flex-column p-3 border rounded-4 mt-0 m-3">
+
+        <p class="mb-0">
+
+            Do zbudowania portfela o wartości
+
+            <span class="border-bottom border-2 border-success text-nowrap">
+                250 000,00 zł
+            </span>
+
+            do 26. roku życia należy systematycznie odkładać:
+
+        </p>
+
+        <hr class="hr">
+
+        <div class="display-4 logo">
+
+            <span id="calc-monthly-val">
+                0.00
+            </span>
+
+            <span class="fs-4 text-success">
+                zł / msc
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- DOLNY PRZYCISK -->
+
+    <div
+        class="sticky-bottom bg-fading p-3"
+        data-bs-toggle="modal"
+        data-bs-target="#addAssetModal"
+    >
+
+        <button
+            class="btn btn-light fw-semibold py-2 rounded-pill w-100"
+            type="button"
+        >
+            Dodaj transakcję
+        </button>
+
+    </div>
+
+
+    <!-- MODAL: DODAJ TRANSAKCJĘ -->
+
+    <div
+        class="modal fade"
+        id="addAssetModal"
+        tabindex="-1"
+        aria-labelledby="addAssetModalLabel"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered p-3">
+
+            <div class="modal-content bg-dark-subtle text-white p-2 rounded-5">
+
+                <div class="modal-header border-bottom-0">
+
+                    <h5
+                        class="modal-title fs-6"
+                        id="addAssetModalLabel"
+                    >
+                        Dodaj nowe środki
+                    </h5>
+
+                </div>
+
+
+                <div class="modal-body py-0">
+
+                    <div class="mb-2">
+
+                        <select
+                            class="form-select bg-body-tertiary text-white py-2 px-3 rounded-pill"
+                            id="assetCategory"
+                        >
+                            <option value="obligacje">Obligacje</option>
+                            <option value="akcje">Akcje</option>
+                            <option value="kryptowaluty">Kryptowaluty</option>
+                            <option value="inne">Inne aktywa</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="mb-1">
+
+                        <input
+                            type="number"
+                            class="form-control bg-body-tertiary text-white py-2 px-3 rounded-pill"
+                            id="assetAmount"
+                            placeholder="4000 zł"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer flex-nowrap border-top-0">
+
+                    <button
+                        type="button"
+                        class="btn bg-body-tertiary text-white fw-semibold lh-1 p-3 rounded-pill w-50"
+                        data-bs-dismiss="modal"
+                    >
+                        Zamknij
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn bg-body-tertiary text-white fw-semibold lh-1 p-3 rounded-pill w-50"
+                        id="saveAssetBtn"
+                    >
+                        Zapisz
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL: HISTORIA TRANSAKCJI -->
+
+    <div
+        class="modal fade"
+        id="historyModal"
+        tabindex="-1"
+        aria-labelledby="historyModalLabel"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered p-3">
+
+            <div class="modal-content bg-dark-subtle text-white p-2 rounded-5">
+
+                <div class="modal-header border-bottom-0">
+
+                    <h5
+                        class="modal-title fs-6"
+                        id="historyModalLabel"
+                    >
+                        Historia transakcji
+                    </h5>
+
+                    <button
+                        type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Zamknij"
+                    ></button>
+
+                </div>
+
+
+                <div class="modal-body pt-0">
+
+                    <div id="transactionHistory"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL: AUTORYZACJA -->
+
+    <div
+        class="bg-dark-subtle rounded-top-5 offcanvas offcanvas-bottom h-auto"
+        tabindex="-1"
+        id="offcanvasBottom"
+        aria-labelledby="offcanvasBottomLabel"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+    >
+
+        <div class="offcanvas-body d-flex flex-column align-items-center justify-content-center text-center pt-3 p-4">
+
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="100px"
+                viewBox="0 -960 960 960"
+                width="100px"
+                fill="#fff"
+            >
+                <path d="M480-137.54q-116.54-33.77-194.27-139.38Q208-382.53 208-515v-201.31l272-104.61 272 104.61V-515q0 132.47-77.73 238.08Q596.54-171.31 480-137.54Zm0-33.46q104-32.25 172-129t68-215v-180l-240-91.23L240-695v180q0 118.25 68 215t172 129Zm0-307.23Zm-94.46 104.38h188.92q6.93 0 11.62-4.68 4.69-4.69 4.69-11.62v-140.93q0-6.93-4.69-11.62-4.68-4.68-11.62-4.68h-30.92v-24q0-26.63-18.14-44.7-18.13-18.07-44.84-18.07-26.71 0-44.64 18.07Q418-598.01 418-571.38v24h-32.46q-6.93 0-11.62 4.68-4.69 4.69-4.69 11.62v140.93q0 6.93 4.69 11.62 4.68 4.68 11.62 4.68Zm59.23-173.53v-24q0-15.3 10.29-25.65 10.29-10.35 25.5-10.35t25.71 10.35q10.5 10.35 10.5 25.65v24h-72Z"/>
+            </svg>
+
+            <h5
+                class="offcanvas-title fw-bold text-white my-2"
+                id="offcanvasBottomLabel"
+            >
+                Wymagana autoryzacja
+            </h5>
+
+            <p class="small text-muted pb-2 mb-3">
+                Aby uzyskać dostęp do panelu inwestycyjnego, prześlij plik autoryzacyjny JSON.
+            </p>
+
+            <label class="btn btn-light fw-semibold py-2 rounded-pill w-100 mb-3">
+
+                Wgraj plik JSON
+
+                <input
+                    type="file"
+                    id="offcanvasImportFile"
+                    class="d-none"
+                    accept=".json"
+                >
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+
+        /* =========================
+           DANE PORTFELA
+        ========================= */
+
+        const defaultPortfolio = {
+            obligacje: 0,
+            akcje: 0,
+            kryptowaluty: 0,
+            inne: 0
+        };
+
+
+        let portfolioData =
+            JSON.parse(localStorage.getItem('myPortfolio'))
+            || defaultPortfolio;
+
+
+        /* =========================
+           HISTORIA TRANSAKCJI
+        ========================= */
+
+        let transactionHistory =
+            JSON.parse(localStorage.getItem('transactionHistory'))
+            || [];
+
+
+        /* =========================
+           AUTORYZACJA
+        ========================= */
+
+        const offcanvasEl =
+            document.getElementById('offcanvasBottom');
+
+        const lockPanel =
+            new bootstrap.Offcanvas(offcanvasEl);
+
+        lockPanel.show();
+
+
+        /* =========================
+           FORMATOWANIE PIENIĘDZY
+        ========================= */
+
+        function formatMoney(amount) {
+
+            return amount.toLocaleString('pl-PL', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+        }
+
+
+        /* =========================
+           NAZWA KATEGORII
+        ========================= */
+
+        function getCategoryName(category) {
+
+            const names = {
+                obligacje: 'OBLIGACJE',
+                akcje: 'AKCJE',
+                kryptowaluty: 'KRYPTOWALUTY',
+                inne: 'INNE AKTYWA'
+            };
+
+            return names[category] || category.toUpperCase();
+
+        }
+
+
+        /* =========================
+           AKTUALIZACJA INTERFEJSU
+        ========================= */
+
+        function updateUI() {
+
+            const total =
+                portfolioData.obligacje +
+                portfolioData.akcje +
+                portfolioData.kryptowaluty +
+                portfolioData.inne;
+
+
+            document.getElementById('total-amount-val').innerText =
+                formatMoney(total);
+
+
+            const categories = [
+                'obligacje',
+                'akcje',
+                'kryptowaluty',
+                'inne'
+            ];
+
+
+            categories.forEach(cat => {
+
+                const el =
+                    document.getElementById(`val-${cat}`);
+
+                if (el) {
+
+                    el.innerText =
+                        formatMoney(portfolioData[cat]) + ' zł';
+
+                }
+
+            });
+
+
+            /* CEL */
+
+            const targetAmount = 250000;
+
+            const progressPercent =
+                Math.min(
+                    (total / targetAmount) * 100,
+                    100
+                ).toFixed(0);
+
+
+            document.getElementById('progress-bar').style.width =
+                progressPercent + '%';
+
+
+            document.getElementById('progress-percent').innerText =
+                progressPercent + '%';
+
+
+            document.getElementById('progress-collected').innerText =
+                'Zebrano: ' + formatMoney(total) + ' zł';
+
+
+            /* KALKULATOR */
+
+            const birthDate =
+                new Date(2004, 6, 28);
+
+            const deadlineDate =
+                new Date(
+                    birthDate.getFullYear() + 26,
+                    birthDate.getMonth(),
+                    birthDate.getDate()
+                );
+
+
+            const currentDate = new Date();
+
+
+            let monthsLeft =
+                (deadlineDate.getFullYear() -
+                    currentDate.getFullYear()) * 12
+                +
+                (deadlineDate.getMonth() -
+                    currentDate.getMonth());
+
+
+            if (
+                currentDate.getDate() >
+                deadlineDate.getDate()
+            ) {
+                monthsLeft--;
+            }
+
+
+            const remainingAmount =
+                targetAmount - total;
+
+
+            let monthlyRequired = 0;
+
+
+            if (
+                remainingAmount > 0 &&
+                monthsLeft > 0
+            ) {
+
+                monthlyRequired =
+                    remainingAmount / monthsLeft;
+
+            }
+
+
+            document.getElementById('calc-monthly-val').innerText =
+                formatMoney(monthlyRequired);
+
+        }
+
+
+        /* =========================
+           WYŚWIETLANIE HISTORII
+        ========================= */
+
+        function updateTransactionHistory() {
+
+            const container =
+                document.getElementById('transactionHistory');
+
+
+            if (transactionHistory.length === 0) {
+
+                container.innerHTML = `
+                    <div class="text-center py-4">
+                        <p class="text-muted small mb-0">
+                            Brak transakcji
+                        </p>
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML =
+                transactionHistory
+                    .map(transaction => {
+
+                        return `
+                            <div class="d-flex align-items-center justify-content-between py-3 border-bottom">
+
+                                <div>
+
+                                    <div class="fw-semibold">
+                                        ${transaction.date}
+                                    </div>
+
+                                    <div class="small text-muted">
+                                        ${getCategoryName(transaction.category)}
+                                    </div>
+
+                                </div>
+
+                                <div class="fw-semibold text-success">
+                                    +${formatMoney(transaction.amount)} zł
+                                </div>
+
+                            </div>
+                        `;
+
+                    })
+                    .join('');
+
+        }
+
+
+        /* =========================
+           START
+        ========================= */
+
+        updateUI();
+        updateTransactionHistory();
+
+
+        /* =========================
+           ZAPISYWANIE TRANSAKCJI
+        ========================= */
+
+        document
+            .getElementById('saveAssetBtn')
+            .addEventListener('click', () => {
+
+
+                const category =
+                    document.getElementById('assetCategory').value;
+
+
+                const amountInput =
+                    document.getElementById('assetAmount').value;
+
+
+                const amount =
+                    parseFloat(amountInput);
+
+
+                if (
+                    !isNaN(amount) &&
+                    amount > 0
+                ) {
+
+
+                    /* DODANIE DO PORTFELA */
+
+                    portfolioData[category] += amount;
+
+
+                    localStorage.setItem(
+                        'myPortfolio',
+                        JSON.stringify(portfolioData)
+                    );
+
+
+                    /* DATA */
+
+                    const now = new Date();
+
+
+                    const day =
+                        String(now.getDate()).padStart(2, '0');
+
+
+                    const month =
+                        String(now.getMonth() + 1).padStart(2, '0');
+
+
+                    const year =
+                        now.getFullYear();
+
+
+                    const formattedDate =
+                        `${day}.${month}.${year}`;
+
+
+                    /* HISTORIA */
+
+                    transactionHistory.unshift({
+
+                        date: formattedDate,
+
+                        category: category,
+
+                        amount: amount
+
+                    });
+
+
+                    localStorage.setItem(
+                        'transactionHistory',
+                        JSON.stringify(transactionHistory)
+                    );
+
+
+                    /* AKTUALIZACJA */
+
+                    updateUI();
+
+                    updateTransactionHistory();
+
+
+                    document.getElementById('assetAmount').value = '';
+
+
+                    /* ZAMKNIĘCIE MODALA */
+
+                    const modalEl =
+                        document.getElementById('addAssetModal');
+
+
+                    const modalInstance =
+                        bootstrap.Modal.getInstance(modalEl)
+                        ||
+                        new bootstrap.Modal(modalEl);
+
+
+                    modalInstance.hide();
+
+
+                } else {
+
+                    alert(
+                        'Wpisz poprawną kwotę większą od zera.'
+                    );
+
+                }
+
+            });
+
+
+        /* =========================
+           HISTORIA — OTWARCIE
+        ========================= */
+
+        document
+            .getElementById('historyModal')
+            .addEventListener(
+                'show.bs.modal',
+                () => {
+
+                    updateTransactionHistory();
+
+                }
+            );
+
+
+        /* =========================
+           EXPORT
+        ========================= */
+
+        document
+            .getElementById('exportBtn')
+            .addEventListener('click', () => {
+
+
+                const dataToExport = {
+
+                    ...portfolioData,
+
+                    transactions:
+                        transactionHistory,
+
+                    password: "password"
+
+                };
+
+
+                const blob =
+                    new Blob(
+                        [
+                            JSON.stringify(
+                                dataToExport,
+                                null,
+                                2
+                            )
+                        ],
+                        {
+                            type: 'application/json'
+                        }
+                    );
+
+
+                const url =
+                    URL.createObjectURL(blob);
+
+
+                const downloadAnchorNode =
+                    document.createElement('a');
+
+
+                downloadAnchorNode.href = url;
+
+                downloadAnchorNode.download =
+                    'wieczorek_investments.json';
+
+
+                document.body.appendChild(
+                    downloadAnchorNode
+                );
+
+
+                downloadAnchorNode.click();
+
+
+                downloadAnchorNode.remove();
+
+
+                URL.revokeObjectURL(url);
+
+            });
+
+
+        /* =========================
+           IMPORT
+        ========================= */
+
+        function handleFileImport(event) {
+
+
+            const file =
+                event.target.files[0];
+
+
+            if (!file)
+                return;
+
+
+            const fileReader =
+                new FileReader();
+
+
+            fileReader.onload = (e) => {
+
+
+                try {
+
+
+                    const importedData =
+                        JSON.parse(e.target.result);
+
+
+                    if (
+                        importedData &&
+                        importedData.password === "password"
+                    ) {
+
+
+                        /* PORTFEL */
+
+                        portfolioData = {
+
+                            obligacje:
+                                Number(importedData.obligacje) || 0,
+
+                            akcje:
+                                Number(importedData.akcje) || 0,
+
+                            kryptowaluty:
+                                Number(importedData.kryptowaluty) || 0,
+
+                            inne:
+                                Number(importedData.inne) || 0
+
+                        };
+
+
+                        /* HISTORIA */
+
+                        transactionHistory =
+                            Array.isArray(
+                                importedData.transactions
+                            )
+                            ? importedData.transactions
+                            : [];
+
+
+                        localStorage.setItem(
+                            'myPortfolio',
+                            JSON.stringify(portfolioData)
+                        );
+
+
+                        localStorage.setItem(
+                            'transactionHistory',
+                            JSON.stringify(transactionHistory)
+                        );
+
+
+                        updateUI();
+
+                        updateTransactionHistory();
+
+
+                        lockPanel.hide();
+
+
+                    } else {
+
+
+                        window.stop();
+
+
+                        document.documentElement.innerHTML = `
+
+                            <link
+                                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+                                rel="stylesheet"
+                            >
+
+                            <body class="d-flex flex-column align-items-center justify-content-center vh-100 text-center bg-black text-white px-3">
+
+                                <h1 class="display-4 fw-bold">
+                                    Ooops... Error 404
+                                </h1>
+
+                                <p class="fs-5 text-secondary">
+                                    The requested file is corrupt or unauthorized.
+                                </p>
+
+                            </body>
+
+                        `;
+
+
+                        throw new Error(
+                            "Unauthorized JSON"
+                        );
+
+                    }
+
+
+                } catch (error) {
+
+                    alert(
+                        "Błąd! Niepoprawny format pliku."
+                    );
+
+                }
+
+            };
+
+
+            fileReader.readAsText(file);
+
+
+            event.target.value = '';
+
+        }
+
+
+        document
+            .getElementById('importFile')
+            .addEventListener(
+                'change',
+                handleFileImport
+            );
+
+
+        document
+            .getElementById('offcanvasImportFile')
+            .addEventListener(
+                'change',
+                handleFileImport
+            );
+
+    });
+
+    </script>
+
+</body>
 </html>
