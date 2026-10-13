@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Planer tygodnia</title>
+    <title>Planer | Wieczorek Investments</title>
 
     <style>
         body {
@@ -43,6 +43,12 @@
             );
         }
 
+        .task-editor {
+            resize: none;
+            overflow: hidden;
+            box-shadow: none !important;
+        }
+
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +59,7 @@
 <body class="bg-black text-white">
 
     <!-- HEADER -->
-    <div class="bg-black sticky-top icon-link gap-2 w-100 p-3" style="padding-right: 16px; margin-right: 0px;">
+    <div class="bg-black sticky-top icon-link gap-2 w-100 p-3 z-2" style="padding-right: 16px; margin-right: 0px;">
         <img class="img-fluid object-fit-cover rounded-circle width-1 p-1 bg-white" src="https://plain-weur-prod-public.komododecks.com/202605/25/jAsrISNJ3wOWP5EcWXG5/image.png">
         <span class="fs-5 lh-1 logo">
             Wieczorek
@@ -82,46 +88,9 @@
         </div>
     </div>
 
-    <div class="pt-2 pb-5 px-3">
+    <div class="pb-5 p-3 border-top border-5 rounded-top-5 border-dark position-relative z-3 bg-black" id="tasks">
     </div>
 
-    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
-
-        <div class="modal-dialog modal-dialog-centered p-3">
-
-            <div class="modal-content bg-dark-subtle text-white p-2 rounded-5">
-
-                <div class="modal-header border-bottom-0">
-
-                    <h5 class="modal-title icon-link fs-6" id="addTaskModalLabel">Dodaj zadanie <span class="text-muted small ms-auto" id="taskDayLabel"></span></h5>
-
-                </div>
-
-                <div class="modal-body py-0">
-
-                    <form id="addTaskForm">
-                        <textarea type="text" class="form-control bg-body-tertiary text-white py-2 px-3 rounded-4" id="taskName" placeholder="Treść zadania" maxlength="200" required></textarea>
-                    </form>
-
-                </div>
-
-                <div class="modal-footer flex-nowrap border-top-0">
-
-                    <button type="button" class="btn bg-body-tertiary text-white fw-semibold lh-1 p-3 rounded-pill w-50" data-bs-dismiss="modal">
-                                            Zamknij
-                                        </button>
-
-                    <button type="submit" form="addTaskForm" class="btn bg-body-tertiary text-white fw-semibold lh-1 p-3 rounded-pill w-50">Dodaj</button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     (() => {
         const days = [
@@ -134,13 +103,7 @@
             ['niedziela', 'Niedziela']
         ];
         const storageKey = 'plannerTasks';
-        const planner = document.querySelector('.pt-2.pb-5.px-3');
-        const taskModalElement = document.getElementById('addTaskModal');
-        const taskModal = new bootstrap.Modal(taskModalElement);
-        const taskForm = document.getElementById('addTaskForm');
-        const taskNameInput = document.getElementById('taskName');
-        const taskDayLabel = document.getElementById('taskDayLabel');
-        let selectedDay = null;
+        const planner = document.querySelector('#tasks');
         let tasks = Object.fromEntries(days.map(([key]) => [key, []]));
 
         try {
@@ -163,32 +126,34 @@
         }
 
         function saveTasks() {
-            localStorage.setItem(storageKey, JSON.stringify(tasks));
+            const savedTasks = Object.fromEntries(days.map(([key]) => [
+                key,
+                tasks[key].filter(task => task.text.trim())
+            ]));
+            localStorage.setItem(storageKey, JSON.stringify(savedTasks));
         }
 
-        function render() {
+        function render(focusTaskId = null) {
             planner.replaceChildren();
             days.forEach(([key, label]) => {
                 const section = document.createElement('section');
                 section.className = 'mt-2 mb-3';
 
                 const heading = document.createElement('div');
-                heading.className = 'd-flex align-items-center justify-content-between w-100 mb-1';
+                heading.className = 'd-flex align-items-center justify-content-between w-100 mb-2';
                 const title = document.createElement('h2');
                 title.className = 'fs-2 fw-semibold mb-0';
                 title.textContent = label;
 
                 const addButton = document.createElement('button');
                 addButton.type = 'button';
-                addButton.className = 'btn btn-sm btn-dark fw-medium px-3 rounded-pill';
+                addButton.className = 'btn btn-sm btn-dark fw-semibold px-3 rounded-pill';
                 addButton.textContent = 'Dodaj';
                 addButton.setAttribute('aria-label', `Dodaj zadanie: ${label}`);
                 addButton.addEventListener('click', () => {
-                    selectedDay = key;
-                    taskDayLabel.textContent = label;
-                    taskNameInput.value = '';
-                    taskModal.show();
-                    taskModalElement.addEventListener('shown.bs.modal', () => taskNameInput.focus(), { once: true });
+                    const task = { id: `${Date.now()}-${Math.random()}`, text: '', completed: false };
+                    tasks[key].push(task);
+                    render(task.id);
                 });
                 heading.append(title, addButton);
 
@@ -196,21 +161,42 @@
                 content.className = 'd-flex flex-column gap-2 p-2';
                 tasks[key].forEach(task => {
                     const row = document.createElement('div');
-                    row.className = 'form-check d-flex align-items-center gap-2 ps-0 mt-1';
+                    row.className = 'd-flex align-items-start gap-2';
                     const checkbox = document.createElement('input');
-                    checkbox.className = 'form-check-input rounded-circle flex-shrink-0 m-0';
+                    checkbox.className = 'form-check-input rounded-circle flex-shrink-0 mt-2 m-0';
                     checkbox.type = 'checkbox';
                     checkbox.checked = task.completed;
                     checkbox.setAttribute('aria-label', `Oznacz jako wykonane: ${task.text}`);
                     checkbox.addEventListener('change', () => {
                         task.completed = checkbox.checked;
                         saveTasks();
-                        render();
+                        editor.classList.toggle('text-decoration-line-through', task.completed);
+                        editor.classList.toggle('text-secondary', task.completed);
                     });
 
-                    const text = document.createElement('span');
-                    text.className = task.completed ? 'text-decoration-line-through text-secondary flex-grow-1' : 'flex-grow-1';
-                    text.textContent = task.text;
+                    const editor = document.createElement('textarea');
+                    editor.maxLength = 2000;
+                    editor.className = `task-editor form-control flex-grow-1 bg-transparent text-white border-0 rounded-0 p-1${task.completed ? ' text-decoration-line-through text-secondary' : ''}`;
+                    editor.value = task.text;
+                    editor.placeholder = 'Treść zadania';
+                    editor.setAttribute('aria-label', `Edytuj zadanie: ${task.text || 'nowe zadanie'}`);
+                    const resizeEditor = () => {
+                        editor.style.height = 'auto';
+                        editor.style.height = `${editor.scrollHeight}px`;
+                    };
+                    editor.addEventListener('input', () => {
+                        task.text = editor.value;
+                        editor.setAttribute('aria-label', `Edytuj zadanie: ${task.text || 'nowe zadanie'}`);
+                        resizeEditor();
+                        saveTasks();
+                    });
+                    editor.addEventListener('blur', () => {
+                        if (!task.text.trim()) {
+                            tasks[key] = tasks[key].filter(item => item.id !== task.id);
+                            render();
+                        }
+                    });
+                    resizeEditor();
 
                     const remove = document.createElement('button');
                     remove.type = 'button';
@@ -222,24 +208,20 @@
                         saveTasks();
                         render();
                     });
-                    row.append(checkbox, text, remove);
+                    row.append(checkbox, editor, remove);
                     content.append(row);
+                    if (task.id === focusTaskId) {
+                        requestAnimationFrame(() => {
+                            editor.focus();
+                            editor.setSelectionRange(editor.value.length, editor.value.length);
+                        });
+                    }
                 });
 
                 section.append(heading, content);
                 planner.append(section);
             });
         }
-
-        taskForm.addEventListener('submit', event => {
-            event.preventDefault();
-            const text = taskNameInput.value.trim();
-            if (!selectedDay || !text) return;
-            tasks[selectedDay].push({ id: `${Date.now()}-${Math.random()}`, text, completed: false });
-            saveTasks();
-            taskModal.hide();
-            render();
-        });
 
         document.getElementById('resetBtn').addEventListener('click', () => {
             if (!window.confirm('Usunąć wszystkie zadania ze wszystkich dni?')) return;
