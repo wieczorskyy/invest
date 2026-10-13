@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Planer | Wieczorek Investments</title>
+    <title>Planer tygodnia</title>
 
     <style>
         body {
@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    <div class="pb-5 p-3 border-top border-5 rounded-top-5 border-dark position-relative z-3 bg-black" id="tasks">
+    <div class="pt-4 pb-5 px-3 border-top border-5 rounded-top-5 border-dark position-relative z-3 bg-black" id="tasks">
     </div>
 
     <script>
@@ -137,12 +137,12 @@
             planner.replaceChildren();
             days.forEach(([key, label]) => {
                 const section = document.createElement('section');
-                section.className = 'mt-2 mb-3';
+                section.className = 'border-bottom mb-4';
 
                 const heading = document.createElement('div');
                 heading.className = 'd-flex align-items-center justify-content-between w-100 mb-2';
                 const title = document.createElement('h2');
-                title.className = 'fs-2 fw-semibold mb-0';
+                title.className = 'fs-2 fw-bold mb-0';
                 title.textContent = label;
 
                 const addButton = document.createElement('button');
